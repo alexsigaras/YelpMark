@@ -1,4 +1,3 @@
-YelpMark
-========
+# YelpMark
 
-YelpMark
+![](docs/images/yelpmark.png)
