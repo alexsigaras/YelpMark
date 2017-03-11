@@ -1,0 +1,285 @@
+body, html
+{
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+html {
+	overflow:hidden;
+}
+#wrapper
+{
+  height: 100%;
+  width: 100%;
+  background-color: #999;
+}
+#center_content 
+{
+  float: left;
+  width: 60%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #000;
+  height: 100%;
+}
+
+#BookmarkPanel {
+	background-image: url('../Images/bg.png');
+	background-position: top left;
+	color: white;
+	background-repeat: repeat-x;
+}
+
+.bg {
+	background-image: url('../Images/bg.png');
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+#test {
+	background-image: url('../Images/bg.png');
+	background-position: top left;
+	background-repeat: repeat-x;
+}
+
+.sidebar 
+{
+  height: 100%;
+  width: 20%;
+  background-color: #FF2626;
+  margin: 0;
+  overflow: scroll;
+}
+.sidebar_no_scroll 
+{
+  float: left;
+  height: 100%;
+  width: 20%;
+  background-color: #FF2626;
+  margin: 0;
+  position: relative;
+}
+
+.search {
+	background-image: url('../Images/corner.png');
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+.categories {
+	text-transform: uppercase;
+	color: #333;
+	font-size: 45%;
+}
+
+.venueTags {
+	text-transform: uppercase;
+	color: #333;
+	font-size: 45%;
+}
+
+#venueTags {
+	margin: 0px;
+	padding: 0px;
+}
+
+.sidebar_scrollable
+{
+  width: 100%;
+  margin: 0px;
+  overflow: hidden;
+}
+
+.sidebar_scrollable_bottom
+{
+  width: 100%;
+  overflow: hidden;
+}
+
+.top_content {
+  padding-top: 44px;
+}
+
+.tab
+{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  bottom: 50px;
+  right: -50px;
+}
+
+.sidebar_fixed
+{
+  height: 30%;
+  float: left;
+  width: 100%;
+  margin: 0;
+  background-color: #666;
+}
+.left
+{
+  float: left;
+}
+.right
+{
+  float: right;
+}
+.full
+{
+  float: left;
+  width: 100%;
+  height: 65%;
+}
+
+.down {
+	margin-top: 44px;
+}
+
+.tall 
+{
+	height: 100%;
+	background-color: #333;
+}
+
+.eachResult
+{
+ background-color: #BA0000;
+ padding: 1%;
+ margin: 5%;
+ width: 88%;
+ height: auto;
+ overflow: hidden;
+
+}
+
+.resultText
+{
+ color: #FFF;
+}
+
+#map_canvas {
+  height: 100%;
+  width: 100%;
+
+}
+
+#map_wrap {
+	height: 85%;
+	width: 90%;
+	margin: 44px auto;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 4%;
+	padding-top: 4%;
+}
+
+/* Top right - account information */
+#accountWrapper {
+	float:right;
+	text-align:center;
+	width:170px;
+	margin:10px 20px 0px;
+}
+#accountOption {
+	width:100px;
+}
+
+#directions{
+  height: 500px;
+  width: auto;
+}
+
+#directions img{
+  visibility: hidden;
+}
+
+/*Info Window stuff*/
+.info-window-content{
+width: 400px;
+  max-width: 400px;
+}
+
+#iwImage{
+  max-width: 100px;
+  width: 100px;
+  float:left;
+  margin: 15px 10px 0 10px;
+}
+
+#iwData{
+  overflow: hidden;
+  float:left;
+  width: 220px;
+  max-width: 220px;
+  margin-left: 100px;  
+
+}
+
+#iwText{
+  width: 200px;
+  float:left;
+}
+
+#iwBookButton{
+  margin-top: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
+  float: left;
+}
+
+#categorySelect, #bookmarkCategorySelect {
+	padding: 5%;
+	width: 90%;
+	color: white;
+}
+
+#categorySelect h2{
+text-align: center;
+
+}
+
+#bookmarkCategorySelect h2{
+text-align: center;
+
+}
+
+
+.categorySelect {
+	padding-right: 10px;
+}
+
+.scroll_checkboxes {
+    height: 100px;
+    padding: 5px;
+    overflow: auto;
+    border: 1px solid #ccc;
+	
+}
+
+.deleteAllBookmarks {
+	padding:10px 0px 0px 20px;
+}
+.deleteAllBookmarks button {
+	margin-right:10px;
+}
+
+@media print {
+  html, body {
+    height: auto;
+  }
+
+/*  #map_canvas {
+    height: 650px;
+  }*/
+
+}
+}
+
+
+
+
+
+

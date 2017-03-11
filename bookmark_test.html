@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/oauth.js"></script>
+	<script type="text/javascript" src="js/sha1.js"></script>
+	<script type="text/javascript" src="js/bookmark.js"></script>
+	<script type="text/javascript" src="js/dollarevent.js"></script>	
+	<script type="text/javascript" src="js/dollar.js"></script>
+	<style type="text/css">
+		#resultPanel {
+			overflow:hidden;
+			margin:50px;
+			width:500px;
+			float:right;
+			background-color:#EEE;			
+		}
+		.eachResult {
+			overflow:hidden;
+			cursor:pointer;
+			border-bottom:1px solid gray;
+		}
+		.eachResult:hover {
+			background-color:gray;
+		}
+		.eachResult .name {
+			width:100px;
+			float:left;
+		}
+		.eachResult .snippet_text {
+			width:400px;
+			float:left;
+		}
+		#bookmarkPanel {
+			overflow:hidden;
+			margin:50px;
+			width:500px;
+			float:left;
+			background-color:#EEE;			
+		}
+		.bookmark {
+			height:70px;
+			margin-bottom:10px;
+			overflow:auto;
+		}
+		#stroke {
+			width:300px;
+			height:100px;
+			background-color:#DDD;
+			display:none;
+		}
+		.strokeOpen {
+			width:50px;
+		}
+		.strokeResult {
+			width:100%;
+			padding-top:5px;
+			height:30px;
+			font-size:20px;
+			text-align:center;
+		}
+		.strokeCanvas {
+			position:absolute;
+			top:0;left:0;
+			z-index:10;
+			width:100%;
+			height:100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="inputWrapper" style="margin:50px auto 0;width:300px;">
+		<input type="text" id="inputBox" x-webkit-speech speech/>
+		<div id='stroke'></div>
+		<button class='strokeOpen' onclick='if($("#stroke").css("display") == "none") $("#stroke").show(); else $("#stroke").hide();'>Stroke</button>
+		<input id="submit" type="submit" value="Search"/></div>
+	<div id="clearWrapper" style="margin:0px auto;width:300px;">
+		<button id="showbookmark" onclick="updateBookmark();">Show Bookmark</button>
+		<button id="clearbookmark" onclick="bookmark.clear(); updateBookmark();">Clear Bookmark</button>
+	</div>
+	<div id="resultPanel"></div>
+	<div id="bookmarkPanel"></div>
+</body>
+
+
+<script type="text/javascript">
+	var updateBookmark = function(){
+		var bookmarks = bookmark.getItem("bookmarks", "object");
+		$('#bookmarkPanel').empty();
+		for(var cnt = 0 ; cnt <bookmarks.length; cnt++){
+			$('#bookmarkPanel').append("<div class='bookmark'>" + bookmarks[cnt].obj + "</div>");
+		}
+	}
+	$('body').ready(function(){
+		onLoad();
+		strokenizer(document.getElementById('stroke'));
+	});
+	$("#submit").click(function(){
+		querybookmark($('#inputBox').val());	
+	});
+
+	var auth = { 
+		  //
+		  // Update with your auth tokens.
+		  //
+		  consumerKey: "nuceAW1zjGXNkQp4sjK-6A", 
+		  consumerSecret: "qWYAoriy3fufjX9J9jYkmYeH0pI",
+		  accessToken: "Q0n1pPIY8fJ_sYeous3JF3Hh250ZvgDM",
+		  // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
+		  // You wouldn't actually want to expose your access token secret like this in a real application.
+		  accessTokenSecret: "3OSJp_QEOPgrpIkEI4lz0qxDp_U",
+		  serviceProvider: { 
+		    signatureMethod: "HMAC-SHA1"
+		  }
+		};
+
+	function querybookmark(query) {
+				
+		var terms = query;
+		var near = 'New+York';
+		
+		var accessor = {
+		  consumerSecret: auth.consumerSecret,
+		  tokenSecret: auth.accessTokenSecret
+		};
+		
+		parameters = [];
+		parameters.push(['term', terms]);
+		parameters.push(['location', near]);
+		parameters.push(['callback', 'cb']);
+		parameters.push(['oauth_consumer_key', auth.consumerKey]);
+		parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
+		parameters.push(['oauth_token', auth.accessToken]);
+		parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+		
+		var message = { 
+		  'action': 'http://api.yelp.com/v2/search',
+		  'method': 'GET',
+		  'parameters': parameters 
+		};
+		
+		OAuth.setTimestampAndNonce(message);
+		OAuth.SignatureMethod.sign(message, accessor);
+		
+		var parameterMap = OAuth.getParameterMap(message.parameters);
+		parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature)
+		console.log(parameterMap);
+		
+		$.ajax({
+		  'url': message.action,
+		  'data': parameterMap,
+		  'cache': true,
+		  'dataType': 'jsonp',
+		  'jsonpCallback': 'cb',
+		  'success': function(data, textStats, XMLHttpRequest) {
+			$('#resultPanel').empty();
+		    //var output = prettyPrint(data);
+		    $(data.businesses).each(function(){
+		    	
+		    	var element = this;
+		    	var eachResult = $("<div class='eachResult'></div>");
+		    	eachResult.append("<div class='name'>" + element.name + "</div>");
+		    	eachResult.click(function(){
+		    		console.log(element);
+			    	//addBookmark(id);
+			    	bookmark.add(element);
+			    	updateBookmark();
+		    	});
+			    $("#resultPanel").append(eachResult);
+		    });
+//		    console.log($('businesses', data)[0]);
+//		    $("#resultPanel").text($('businesses',data)[0]);
+		  }
+		});
+	}
+</script>
+</html>
