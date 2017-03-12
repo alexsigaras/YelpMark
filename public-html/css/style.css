@@ -25,20 +25,20 @@ html {
 }
 
 #BookmarkPanel {
-	background-image: url('../Images/bg.png');
+	background-image: url('../images/bg.png');
 	background-position: top left;
 	color: white;
 	background-repeat: repeat-x;
 }
 
 .bg {
-	background-image: url('../Images/bg.png');
+	background-image: url('../images/bg.png');
 	background-position: bottom left;
 	background-repeat: repeat-x;
 }
 
 #test {
-	background-image: url('../Images/bg.png');
+	background-image: url('../images/bg.png');
 	background-position: top left;
 	background-repeat: repeat-x;
 }
@@ -62,7 +62,7 @@ html {
 }
 
 .search {
-	background-image: url('../Images/corner.png');
+	background-image: url('../images/corner.png');
 	background-position: bottom right;
 	background-repeat: no-repeat;
 }
