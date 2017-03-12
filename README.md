@@ -4,6 +4,12 @@ YelpMark is a Yelp bookmark enhancing web application that enables users to tag 
 
 ![](docs/images/yelpmark.png)
 
+## Documentation
+
+- Proposed Design Concept
+- YelpMark Development
+- Designs
+
 ## Running YelpMark using docker
 
 ### Template
@@ -19,7 +25,6 @@ httpd:2.4
 ### Where:
 - **{PATH/TO/public-html}**: The location where public-html files are stored.
 - **{PORT}**: The external port you want to expose YelpMark.
-
 
 ### Example
 
