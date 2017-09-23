@@ -25,7 +25,7 @@ docker run -d --name yelpmark \
 --restart=always \
 -p {PORT}:80 \
 -v '{PATH/TO/public-html}':/usr/local/apache2/htdocs/ \
-httpd:2.4
+httpd:2.4.27
 ```
 
 ### Where:
@@ -37,7 +37,7 @@ httpd:2.4
 ```bash
 docker run -d --name yelpmark \
 --restart=always \
--p 8081:80 \
--v '$PWD'/public-html:/usr/local/apache2/htdocs/ \
-httpd:2.4
+-p 3000:80 \
+-v ${PWD}/public-html:/usr/local/apache2/htdocs/ \
+httpd:2.4.27
 ```
