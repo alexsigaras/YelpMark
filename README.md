@@ -11,10 +11,16 @@ YelpMark is a Yelp bookmark enhancing web application that enables users to tag 
 ## Documentation
 
 - [Proposed Design Concept](docs/Proposed%20Design%20Concept.pdf)
-- [Designs](docs/designs.md)
 - [User Scenario Video](https://youtu.be/T5NMnk89QlM)
 - [YelpMark Development](docs/YelpMark%20Development%20Updated.pdf)
 - [YelpMark User Manual](docs/YelpMark%20User%20Manual.pdf)
+
+## Designs
+
+![](docs/images/2012-11-27%2017.18.05.jpg)
+![](docs/images/2012-11-27%2017.18.08.jpg)
+![](docs/images/2012-11-27%2017.18.29.jpg)
+![](docs/images/2012-11-27%2017.18.31.jpg)
 
 ## Running YelpMark using docker
 
